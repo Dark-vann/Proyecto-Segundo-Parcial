@@ -1,8 +1,8 @@
 const Contexto = document.getElementById("Contexto")
 const WingmanDes = document.getElementById("container")
 const Wingmans = document.getElementById("Wingmans")
-const button = document.querySelector(".btn-1");
-const button_2 = document.querySelector(".btn-2");
+const button = document.querySelector("#btn-1");
+const button_2 = document.querySelector("#btn-2");
 
 const Carnalitos = [
     { src: "Carnalitos/Wingman vs ISO.jpg", texto: "Radianita o Plomo" },
@@ -11,7 +11,7 @@ const Carnalitos = [
     { src: "Carnalitos/Wingman sorbo.jpg", texto: "Wingman sorbito" },
 ];
 
-const indiceActual = 0;
+let indiceActual = 0;
 
 function mostrarImagen() {
     Wingmans.src = Carnalitos[indiceActual].src;
