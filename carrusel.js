@@ -1,28 +1,37 @@
-let texto_Wingmans = "Texto pa Wingmans";
-console.log(texto_Wingmans);
-
+const Contexto = document.getElementById("Contexto")
 const WingmanDes = document.getElementById("container")
 const Wingmans = document.getElementById("Wingmans")
+const button = document.querySelector("#btn-1");
+const button_2 = document.querySelector("#btn-2");
 
-const button = document.querySelector("btn-1");
-const button_2 = document.querySelector("btn-2");
+const Carnalitos = [
+    { src: "Carnalitos/Wingman vs ISO.jpg", texto: "Radianita o Plomo" },
+    { src: "Carnalitos/Wingman bebida.jpg", texto: "Wingman con un boba" },
+    { src: "Carnalitos/Wingman chiquito.jpg", texto: "Un Wingman Chiquito" },
+    { src: "Carnalitos/Wingman sorbo.jpg", texto: "Wingman sorbito" },
+];
 
-button.addEventListener("click", function () {
-    changetext("Wingman con un boba", "Un Canalito con un boba");
-    changeWingman("Wingman bebida.jpg");
-})
+let indiceActual = 0;
 
-button_2.addEventListener("click", function () {
-    changetext("Wingman chiquito", "Un Carnalito Chiquito");
-    changeWingman("Wingman chiquito.jpg");
-
-})
-
-function changetext(alert_text, container_text) {
-    alert(alert_text)
-    WingmanDes.textContent = container_text
+function mostrarImagen() {
+    Wingmans.src = Carnalitos[indiceActual].src;
+    Contexto.textContent = Carnalitos[indiceActual].texto;
 }
 
-function changeWingman(image_url) {
-    Wingmans.src = image_url
-}
+button.addEventListener("click", () => {
+    indiceActual++;
+    if (indiceActual >= Carnalitos.length) {
+        indiceActual = 0;
+    }
+    mostrarImagen();
+});
+
+button_2.addEventListener("click", () => {
+    indiceActual--;
+    if (indiceActual < 0) {
+        indiceActual = Carnalitos.length - 1;
+    }
+    mostrarImagen();
+})
+
+mostrarImagen();
